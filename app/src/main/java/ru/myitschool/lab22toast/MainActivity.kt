@@ -1,21 +1,52 @@
-package ru.myitschool.lab22toast;
+package ru.myitschool.lab22toast
 
-import android.os.Bundle;
+import android.os.Bundle
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import ru.myitschool.lab22toast.databinding.ActivityMainBinding
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
+class MainActivity : AppCompatActivity() {
+    private var binding: ActivityMainBinding? = null
 
-import ru.myitschool.lab22toast.databinding.ActivityMainBinding;
+    fun showMessage(s: String) {
+        Toast.makeText(this, s, Toast.LENGTH_LONG).show()
+    }
 
-public class MainActivity extends AppCompatActivity {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
-    private ActivityMainBinding binding;
+        binding = ActivityMainBinding.inflate(layoutInflater)
+//        setContentView(R.layout.activity_main)
+        showMessage(getString(R.string.ncreate))
+    }
 
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(R.layout.activity_main);
+    override fun onStart() {
+        super.onStart()
+        showMessage(getString(R.string.nstart))
+    }
 
+    override fun onResume() {
+        super.onResume()
+        showMessage(getString(R.string.nresume))
+    }
+
+    override fun onPause() {
+        super.onPause()
+        showMessage(getString(R.string.npause))
+    }
+
+    override fun onStop() {
+        super.onStop()
+        showMessage(getString(R.string.nstop))
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        showMessage(getString(R.string.nrestart))
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        showMessage(getString(R.string.ndestroy))
     }
 }
