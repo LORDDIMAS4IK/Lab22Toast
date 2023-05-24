@@ -13,11 +13,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+//        Требуется сохранять активность и ее стостояние так как при разрушении
+//        активность теряется и счетчик не обновляется
         super.onCreate(savedInstanceState)
-
+        var kcreate = 1
         binding = ActivityMainBinding.inflate(layoutInflater)
 //        setContentView(R.layout.activity_main)
-        showMessage(getString(R.string.ncreate))
+        if (kcreate > 1) {
+            showMessage(getString(R.string.ncreate))
+            kcreate+=1
+        } else {
+            showMessage(getString(R.string.ncreate))
+            kcreate+=1
+        }
     }
 
     override fun onStart() {
